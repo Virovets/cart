@@ -1,0 +1,22 @@
+<div class="table-wrapper">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td><input type="number" value="{{product.amount}}" (change)="amountChange($event, product)"></td>
+      <td>{{product.price}} $</td>
+      <td (click)="onDeleteProduct(product)"><img src="assets/icons/delete.png" alt=""></td>
+    </tr>
+  </table>
+
+  <div class="full-price-wrapper">
+    <div>Total</div>
+    <div class="price">{{fullPrice}}$</div>
+  </div>
+
+</div>

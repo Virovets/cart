@@ -1,0 +1,74 @@
+.table-wrapper {
+  border-radius: 25px;
+  overflow: hidden;
+  margin-top: 25px;
+  color: white;
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    background-color: #9e9e9e;
+    font-size: 20px;
+
+    &:last-of-type {
+      border: none;
+    }
+  }
+
+  td, th {
+    border-right: 1px solid #929292;
+    text-align: left;
+    padding: 15px;
+  }
+
+  td {
+    input {
+      height: 35px;
+      width: 40px;
+      border-radius: 20px;
+      background-color: #9e9e9e;
+      outline: none;
+      padding: 0 15px;
+      border: none;
+      color: white;
+      text-align: center;
+    }
+
+    &:last-of-type {
+      text-align: center;
+      cursor: pointer;
+    }
+    img {
+      width: 15px;
+    }
+  }
+
+  tr {
+    background-color: #b7b7b7;
+    &:nth-child(even) {
+      background-color: #c4c4c4;
+    }
+  }
+
+  .full-price-wrapper {
+    background-color: #646464;
+    padding: 20px;
+    display: flex;
+    text-align: right;
+    flex-direction: column;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}

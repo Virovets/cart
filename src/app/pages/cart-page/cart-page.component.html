@@ -1,0 +1,10 @@
+<div class="cart-wrapper">
+  <app-product-addition (addProduct)="onAddProduct($event)"></app-product-addition>
+
+  <app-products-table
+    [products]="products"
+    [fullPrice]="fullPrice"
+    (deleteProduct)="onDeleteProduct($event)"
+    (amountChangeEmit)="onChangeProduct($event)">
+  </app-products-table>
+</div>

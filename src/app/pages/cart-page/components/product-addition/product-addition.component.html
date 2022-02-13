@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <form [formGroup]="productForm" class="inputs-block">
+    <div class="name-input">
+      <label for="item-name">Name</label>
+      <input type="text" id="item-name" formControlName="name" [ngClass]="{'is-invalid': pf.name.invalid && pf.name.touched}">
+    </div>
+    <div class="amount-input">
+      <label for="item-amount">Amount</label>
+      <input type="number" id="item-amount" formControlName="amount" [ngClass]="{'is-invalid': pf.amount.invalid && pf.amount.touched}">
+    </div>
+    <div class="price-input">
+      <label for="item-price">Price</label>
+      <input type="number" id="item-price" formControlName="price" [ngClass]="{'is-invalid': pf.price.invalid && pf.price.touched}">
+    </div>
+  </form>
+  <div class="button-block" (click)="onAddProduct(productForm.value)">
+    <button>Add</button>
+  </div>
+
+</div>

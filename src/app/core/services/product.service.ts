@@ -9,10 +9,8 @@ export class ProductService {
   private _products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
   public products$ = this._products$.asObservable();
 
-  constructor() { }
-
   addProduct(product: Product) {
-    this._products$.next([...this._products$.getValue(), product]);
+    this.setProducts([...this._products$.getValue(), product]);
   }
 
   deleteProduct(data: Product) {
@@ -21,10 +19,10 @@ export class ProductService {
       if (item === data) { products.splice(index, 1); }
     });
 
-    this._products$.next(products);
+    this.setProducts(products);
   }
 
-  changeProducts(products: Product[]) {
+  setProducts(products: Product[]) {
     this._products$.next(products);
   }
 }

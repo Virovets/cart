@@ -13,7 +13,7 @@
       <input type="number" id="item-price" formControlName="price" [ngClass]="{'is-invalid': pf.price.invalid && pf.price.touched}">
     </div>
   </form>
-  <div class="button-block" (click)="onAddProduct()">
+  <div class="button-block" (click)="onAddProduct(productForm.value)">
     <button>Add</button>
   </div>
 

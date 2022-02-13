@@ -16,10 +16,17 @@ describe('ProductsTableComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductsTableComponent);
     component = fixture.componentInstance;
+    component.products = [{name: 'test', amount: 1, price: 10}];
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('click on Delete Product', () => {
+    const event = spyOn(component.deleteProduct, 'emit');
+    component.onDeleteProduct({name: 'test', amount: 1, price: 10});
+    expect(event).toHaveBeenCalledWith({name: 'test', amount: 1, price: 10});
   });
 });

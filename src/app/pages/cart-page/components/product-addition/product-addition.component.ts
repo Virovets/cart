@@ -24,12 +24,12 @@ export class ProductAdditionComponent {
     })
   }
 
-  onAddProduct() {
+  onAddProduct(product: Product) {
     if (this.productForm.invalid) {
       Object.values(this.productForm.controls).forEach((control) => control.markAsTouched());
       return;
     }
-    this.addProduct.emit(this.productForm.value);
+    this.addProduct.emit(product);
   }
 
   public get pf() {

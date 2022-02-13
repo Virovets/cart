@@ -17,12 +17,16 @@ export class CartPageComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  public getProducts() {
     this.productService.products$.pipe(takeUntil(this.destroy$))
       .subscribe((products: Product[]) => {
         this.products = products;
         let summ = 0;
         for(const item of products) {
-          summ += (+item.price * +item.amount)
+          summ += (item.price * item.amount)
         }
         this.fullPrice = summ;
       })
@@ -37,7 +41,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
     if (filterProducts.length) {
       return;
     }
-      this.productService.addProduct(product);
+    this.productService.addProduct(product);
   }
 
   public onChangeProduct(product: Product) {
@@ -47,7 +51,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
       }
       return item;
     });
-    this.productService.changeProducts(newProducts);
+    this.productService.setProducts(newProducts);
   }
 
   ngOnDestroy(): void {

@@ -9,20 +9,20 @@ import { Product } from '../../../../core/interfaces/product-interface';
 export class ProductsTableComponent {
   @Input() fullPrice: number = 0;
   @Input() products: Product[] = [];
-  @Output() deleteProduct = new EventEmitter<Product>();
-  @Output() amountChangeEmit = new EventEmitter<Product>();
+  @Output() deleteProduct: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() amountChangeEmit: EventEmitter<Product> = new EventEmitter<Product>();
 
   public onDeleteProduct(product: Product) {
     this.deleteProduct.emit(product);
   }
 
-  amountChange(event: any, product: Product) {
-    const copyProduct: Product = {
+  public onAmountChange(event: Event, product: Product) {
+    const changedProduct: Product = {
       name: product.name,
-      amount: event.target.value,
+      amount: +(event.target as HTMLInputElement).value,
       price: product.price
     };
 
-    this.amountChangeEmit.emit(copyProduct);
+    this.amountChangeEmit.emit(changedProduct);
   }
 }

@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductAdditionComponent } from './product-addition.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 describe('ProductAdditionComponent', () => {
   let component: ProductAdditionComponent;
@@ -43,5 +44,19 @@ describe('ProductAdditionComponent', () => {
     component.productForm.controls.amount.setValue('');
     component.productForm.controls.price.setValue(1);
     expect(component.productForm.valid).toBeFalse();
+  });
+
+  it('price input should has class is-invalid', () => {
+    const newProduct = {
+      name: 'test',
+      amount: 10,
+      price: ''
+    };
+    component.productForm.patchValue(newProduct);
+    component.onAddProduct(component.productForm.value);
+    fixture.detectChanges();
+
+    const priceInput = fixture.debugElement.query(By.css('#item-price')).nativeElement;
+    expect(priceInput.classList).toContain('is-invalid');
   });
 });
